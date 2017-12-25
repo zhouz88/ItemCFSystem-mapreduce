@@ -1,6 +1,7 @@
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -13,12 +14,12 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class BuildMatrix {
-    public static class BuildMatrixMapper extends Mapper<Object, Text, Text, IntWritable> {
+    public static class BuildMatrixMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         @Override
-        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+        public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String[] line = value.toString().trim().split("\t");
-
+            //System.out.println(value.toString());
             if (line.length != 2)
                 throw new RuntimeException();
 

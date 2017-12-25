@@ -21,9 +21,9 @@ public class Driver {
         String[] args4 = {output3, input,  output4};
         String[] args5 = {output4, output5};
 
-        usermovies.main(args1);
-        buildmatrix.main(args2);
-        nomalizematrix.main(args3);
+//        usermovies.main(args1);
+//        buildmatrix.main(args2);
+//        nomalizematrix.main(args3);
         matrixmultipicaliton.main(args4);
         sum.main(args5);
     }

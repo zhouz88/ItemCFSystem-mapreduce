@@ -21,7 +21,8 @@ public class UserMovies {
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String input = value.toString().trim();
-            String[] line = input.split(":");
+           // System.out.println(input);
+            String[] line = input.split(",");
 
             if (line.length < 3)
                 throw new RuntimeException();
@@ -40,7 +41,8 @@ public class UserMovies {
                 sb.append(itr.next());
                 sb.append(',');
             }
-            context.write(key, new Text(sb.toString().substring(0, sb.length() - 1)));
+            int len = sb.length();
+            context.write(key, new Text(sb.toString().substring(0, len - 1)));
         }
     }
 
