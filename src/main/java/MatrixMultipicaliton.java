@@ -84,7 +84,7 @@ public class MatrixMultipicaliton {
         //how chain two mapper classes?
         ChainMapper.addMapper(job, MatrixMultipicalitonMovieMapper.class, LongWritable.class, Text.class, Text.class, Text.class, conf);
         ChainMapper.addMapper(job, MatrixMultipicalitonUserMapper.class, Text.class, Text.class, Text.class, Text.class, conf);
-        //第二个mapper的input要和第一个output一直
+
 
 //        job.setMapperClass(MatrixMultipicalitonMovieMapper.class);
 //        job.setMapperClass(MatrixMultipicalitonUserMapper.class);
@@ -97,7 +97,7 @@ public class MatrixMultipicaliton {
 
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, MatrixMultipicalitonMovieMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, MatrixMultipicalitonUserMapper.class);
-        //这里一定要用TextINputformat 不是FIleinput。。。！！
+        
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
         job.waitForCompletion(true);
